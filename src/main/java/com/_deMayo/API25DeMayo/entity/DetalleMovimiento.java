@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @IdClass(DetalleMovimientoId.class)
-@Table(name = "Detalle_movimientos")
+@Table(name = "Detalle_Movimientos")
 @Data
 @NoArgsConstructor
 public class DetalleMovimiento {
