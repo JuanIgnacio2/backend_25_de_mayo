@@ -40,7 +40,7 @@ public class CompraServicesImpl implements CompraService {
     }
 
     @Override
-    public boolean deleteCompras(Long id) {
+    public boolean deleteCompra(Long id) {
         return comprasRepository.findById(id).map(compras -> {
             comprasRepository.delete(compras);
             return true;

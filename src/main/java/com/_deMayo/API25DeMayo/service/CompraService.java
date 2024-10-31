@@ -5,9 +5,9 @@ import java.util.Optional;
 import java.util.List;
 
 public interface CompraService {
-    public List<Compras> getAllCompras();
-    public Optional<Compras> getComprasById(Long id);
+    List<Compras> getAllCompras();
+    Optional<Compras> getComprasById(Long id);
     Compras createCompras(Compras compras);
     Compras updateCompras(Long id, Compras compras);
-    boolean deleteCompras(Long id);
+    boolean deleteCompra(Long id);
 }
