@@ -10,5 +10,6 @@ public interface StockService {
     Optional<Stock> getStockById(Long id);
     Stock saveStock(Stock stock);
     Stock updateStock(Long Id, Stock stockDetalles);
+    Boolean existsById(Long id);
     Boolean deleteStock(Long id);
 }

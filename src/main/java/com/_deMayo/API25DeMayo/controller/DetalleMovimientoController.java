@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/detalleMoviemiento")
+@RequestMapping("api/detalleMoviemiento")
 public class DetalleMovimientoController {
     @Autowired
     private DetalleMovimientoService detalleMovimientoService;

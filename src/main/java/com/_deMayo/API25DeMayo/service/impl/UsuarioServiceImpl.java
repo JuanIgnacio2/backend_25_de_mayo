@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public abstract class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuariosRepository usuariosRepository;
 
@@ -20,7 +20,7 @@ public abstract class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Optional<Usuarios> getUsuarioById(String legajo){
+    public Optional<Usuarios> getUsuarioById(Integer legajo){
         return usuariosRepository.findById(legajo);
     }
 
@@ -30,7 +30,7 @@ public abstract class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuarios updateUsuario(String legajo, Usuarios usuarioDetalles){
+    public Usuarios updateUsuario(Integer legajo, Usuarios usuarioDetalles){
         return usuariosRepository.findById(legajo)
                 .map(usuario -> {
                     usuario.setNombre(usuarioDetalles.getNombre());
@@ -43,12 +43,16 @@ public abstract class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public boolean deleteUsuario(String legajo){
+    public boolean deleteUsuario(Integer legajo){
         return usuariosRepository.findById(legajo)
                 .map(usuario ->{
                     usuariosRepository.delete(usuario);
                     return true;
                 })
                 .orElse(false);
+    }
+
+    public Usuarios authenticateUser(Integer legajo, String contrasenia) {
+        return usuariosRepository.findByLegajoAndContrasenia(legajo, contrasenia).orElse(null);
     }
 }

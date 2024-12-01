@@ -7,8 +7,9 @@ import java.util.Optional;
 
 public interface UsuarioService {
     List<Usuarios> getAllUsuarios();
-    Optional<Usuarios> getUsuarioById(String legajo);
+    Optional<Usuarios> getUsuarioById(Integer legajo);
     Usuarios createUsuario(Usuarios usuario);
-    Usuarios updateUsuario(String legajo, Usuarios usuarioDetalles);
-    boolean deleteUsuario(String legajo);
+    Usuarios updateUsuario(Integer legajo, Usuarios usuarioDetalles);
+    boolean deleteUsuario(Integer legajo);
+    public Usuarios authenticateUser(Integer legajo, String contrasenia);
 }

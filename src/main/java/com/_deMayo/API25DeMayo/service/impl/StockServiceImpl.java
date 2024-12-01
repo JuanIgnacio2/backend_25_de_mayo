@@ -29,17 +29,22 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public Stock updateStock(Long id, Stock stockDetalles){
+    public Stock updateStock(Long id, Stock stockDetails){
         return stockRepository.findById(id)
                 .map(stock -> {
-                    stock.setCodigoDeposito(stockDetalles.getCodigoDeposito());
-                    stock.setNombre(stockDetalles.getNombre());
-                    stock.setCantidad(stockDetalles.getCantidad());
-                    stock.setStockMinimo(stockDetalles.getStockMinimo());
-                    stock.setStockMaximo(stockDetalles.getStockMaximo());
-                    stock.setPrecio(stockDetalles.getPrecio());
+                    stock.setCodigo_deposito(stockDetails.getCodigo_deposito());
+                    stock.setNombre(stockDetails.getNombre());
+                    stock.setCantidad(stockDetails.getCantidad());
+                    stock.setStock_minimo(stockDetails.getStock_minimo());
+                    stock.setStock_maximo(stockDetails.getStock_maximo());
+                    stock.setPrecio(stockDetails.getPrecio());
                     return stockRepository.save(stock);
                 }).orElse(null);
+    }
+
+    @Override
+    public Boolean existsById(Long id) {
+        return stockRepository.existsById(id);
     }
 
     @Override

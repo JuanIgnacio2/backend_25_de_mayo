@@ -1,20 +1,20 @@
 package com._deMayo.API25DeMayo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Compras")
+@Table(name = "compras")
 @Data
 @NoArgsConstructor
 public class Compras {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoCompra;
     private String cuitProveedor;
     private LocalDate fechaCompra;
-    private String codigoDeposito;
+    private Integer codigoDeposito;
 }

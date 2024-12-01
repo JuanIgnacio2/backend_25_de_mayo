@@ -20,9 +20,9 @@ public class DepositoController {
         return depositoService.getAllDepositos();
     }
 
-    @GetMapping("/{codigo}")
-    public ResponseEntity<Depositos> getDepositoByCodigo(@PathVariable String codigo){
-        Optional<Depositos> deposito = depositoService.getDepositoById(codigo);
+    @GetMapping("/{codigoDeposito}")
+    public ResponseEntity<Depositos> getDepositoByCodigo(@PathVariable Integer codigoDeposito){
+        Optional<Depositos> deposito = depositoService.getDepositoById(codigoDeposito);
         return deposito.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -31,14 +31,14 @@ public class DepositoController {
         return depositoService.createDeposito(depositos);
     }
 
-    @PutMapping("/{codigo}")
-    public ResponseEntity<Depositos> updateDeposito(@PathVariable String codigo, @RequestBody Depositos depositos){
-        Depositos updatedDeposito = depositoService.updateDeposito(codigo, depositos);
+    @PutMapping("/{codigoDeposito}")
+    public ResponseEntity<Depositos> updateDeposito(@PathVariable Integer codigoDeposito, @RequestBody Depositos depositos){
+        Depositos updatedDeposito = depositoService.updateDeposito(codigoDeposito, depositos);
         return updatedDeposito != null ? ResponseEntity.ok(updatedDeposito) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> deleteDeposito(@PathVariable String codigo){
-        return depositoService.deleteDeposito(codigo) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    @DeleteMapping("/{codigoDeposito}")
+    public ResponseEntity<String> deleteDeposito(@PathVariable Integer codigoDeposito){
+        return depositoService.deleteDeposito(codigoDeposito) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 }

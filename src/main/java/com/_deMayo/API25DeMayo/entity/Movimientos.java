@@ -1,22 +1,22 @@
 package com._deMayo.API25DeMayo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Movimientos")
+@Table(name = "movimientos")
 @Data
 @NoArgsConstructor
 public class Movimientos {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoMovimiento;
-    private String legajo;
+    private Integer legajo;
     private String detalle;
-    private String desde;
+    private Integer desde;
     private String hasta;
     private LocalDate fecha;
     private String tipoMovimiento;

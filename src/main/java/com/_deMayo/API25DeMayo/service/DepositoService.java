@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface DepositoService {
     List<Depositos> getAllDepositos();
-    Optional<Depositos> getDepositoById(String codigo);
+    Optional<Depositos> getDepositoById(Integer codigoDeposito);
     Depositos createDeposito(Depositos depositos);
-    Depositos updateDeposito(String codigo, Depositos depositos);
-    boolean deleteDeposito(String codigo);
+    Depositos updateDeposito(Integer codigoDeposito, Depositos depositos);
+    boolean deleteDeposito(Integer codigoDeposito);
 }

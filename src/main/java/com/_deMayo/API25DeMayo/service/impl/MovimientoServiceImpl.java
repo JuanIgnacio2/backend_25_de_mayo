@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.List;
 
 @Service
-public abstract class MovimientoServiceImpl implements MovimientoService {
+public class MovimientoServiceImpl implements MovimientoService {
     @Autowired
     private MovimientosRepository movimientosRepository;
 

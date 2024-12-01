@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Proveedores")
+@Table(name = "proveedores")
 @Data
 @NoArgsConstructor
 public class Proveedores {

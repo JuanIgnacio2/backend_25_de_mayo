@@ -31,10 +31,10 @@ public class CompraServicesImpl implements CompraService {
     @Override
     public Compras updateCompras(Long id, Compras compras) {
         return comprasRepository.findById(id).map(compra ->{
-            compra.setCodigoCompra(compra.getCodigoCompra());
-            compra.setFechaCompra(compra.getFechaCompra());
-            compra.setCuitProveedor(compra.getCuitProveedor());
-            compra.setCodigoDeposito(compra.getCodigoDeposito());
+            compra.setCodigoCompra(compras.getCodigoCompra());
+            compra.setFechaCompra(compras.getFechaCompra());
+            compra.setCuitProveedor(compras.getCuitProveedor());
+            compra.setCodigoDeposito(compras.getCodigoDeposito());
             return comprasRepository.save(compra);
         }).orElse(null);
     }

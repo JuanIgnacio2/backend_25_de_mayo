@@ -1,7 +1,6 @@
 package com._deMayo.API25DeMayo.service.impl;
 
 import com._deMayo.API25DeMayo.entity.DetalleCompraId;
-import com._deMayo.API25DeMayo.entity.DetalleMovimiento;
 import com._deMayo.API25DeMayo.entity.Detalle_compra;
 import com._deMayo.API25DeMayo.repository.DetalleCompraRepository;
 import com._deMayo.API25DeMayo.service.DetalleCompraService;
@@ -12,7 +11,7 @@ import java.util.Optional;
 import java.util.List;
 
 @Service
-public abstract class DetalleCompraServiceImpl implements DetalleCompraService {
+public class DetalleCompraServiceImpl implements DetalleCompraService {
     @Autowired
     private DetalleCompraRepository detalleCompraRepository;
 

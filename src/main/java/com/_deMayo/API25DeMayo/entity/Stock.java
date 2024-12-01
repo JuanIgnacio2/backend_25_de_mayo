@@ -1,24 +1,20 @@
 package com._deMayo.API25DeMayo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Table(name = "Stock")
+@Table(name = "stock")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProducto;
+    private Long id_producto;
 
-    private String codigoDeposito;
+    private Integer codigo_deposito;
     private String nombre;
     private Integer cantidad;
-    private Integer stockMinimo;
-    private Integer stockMaximo;
+    private Integer stock_minimo;
+    private Integer stock_maximo;
     private Double precio;
 }

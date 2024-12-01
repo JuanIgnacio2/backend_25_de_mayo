@@ -1,15 +1,12 @@
 package com._deMayo.API25DeMayo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @IdClass(Detalle_compra.class)
-@Table(name = "Detalle_compra")
+@Table(name = "detalle_compra")
 @Data
 @NoArgsConstructor
 public class Detalle_compra {

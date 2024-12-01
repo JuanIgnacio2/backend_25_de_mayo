@@ -32,15 +32,18 @@ public class StockController {
         return stockService.saveStock(stock);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Stock> updateStock(@PathVariable Long id, @RequestBody Stock stock) {
         Stock stockUpdated = stockService.updateStock(id, stock);
         return stockUpdated != null ? ResponseEntity.ok(stockUpdated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Stock> deleteStock(@PathVariable Long id) {
-        stockService.deleteStock(id);
+        if(stockService.existsById(id)) {
+            stockService.deleteStock(id);
+            return ResponseEntity.ok().build();
+        }
         return stockService.deleteStock(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }

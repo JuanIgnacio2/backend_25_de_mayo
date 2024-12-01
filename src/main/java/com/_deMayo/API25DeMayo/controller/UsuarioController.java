@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
@@ -20,7 +20,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{legajo}")
-    public ResponseEntity<Usuarios> getUsuarioByLegajo(@PathVariable String legajo) {
+    public ResponseEntity<Usuarios> getUsuarioByLegajo(@PathVariable Integer legajo) {
         return usuarioService.getUsuarioById(legajo)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -32,13 +32,13 @@ public class UsuarioController {
     }
 
     @PutMapping("/{legajo}")
-    public ResponseEntity<Usuarios> updateUsuario(@PathVariable String legajo, @RequestBody Usuarios usuario) {
+    public ResponseEntity<Usuarios> updateUsuario(@PathVariable Integer legajo, @RequestBody Usuarios usuario) {
         Usuarios updateUsuario = usuarioService.updateUsuario(legajo, usuario);
         return updateUsuario != null ? ResponseEntity.ok(updateUsuario) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{legajo}")
-    public ResponseEntity<Usuarios> deleteUsuario(@PathVariable String legajo) {
+    public ResponseEntity<Usuarios> deleteUsuario(@PathVariable Integer legajo) {
         return usuarioService.deleteUsuario(legajo) ? ResponseEntity.noContent().build():ResponseEntity.notFound().build();
     }
 }

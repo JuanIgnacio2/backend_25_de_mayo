@@ -20,8 +20,8 @@ public class DepositosServiceImpl implements DepositoService {
     }
 
     @Override
-    public Optional<Depositos> getDepositoById(String codigo){
-        return depositoRepository.findById(codigo);
+    public Optional<Depositos> getDepositoById(Integer codigoDeposito){
+        return depositoRepository.findById(codigoDeposito);
     }
 
     @Override
@@ -30,17 +30,17 @@ public class DepositosServiceImpl implements DepositoService {
     }
 
     @Override
-    public Depositos updateDeposito(String codigo, Depositos deposito){
-        return depositoRepository.findById(codigo).map(depositos ->{
-            depositos.setNombre(depositos.getNombre());
-            depositos.setDireccion(depositos.getDireccion());
+    public Depositos updateDeposito(Integer codigoDeposito, Depositos deposito){
+        return depositoRepository.findById(codigoDeposito).map(depositos ->{
+            depositos.setNombre(deposito.getNombre());
+            depositos.setDireccion(deposito.getDireccion());
             return depositoRepository.save(depositos);
         }).orElse(null);
     }
 
     @Override
-    public boolean deleteDeposito(String codigo){
-        return depositoRepository.findById(codigo).map(depositos -> {
+    public boolean deleteDeposito(Integer codigoDeposito){
+        return depositoRepository.findById(codigoDeposito).map(depositos -> {
             depositoRepository.delete(depositos);
             return true;
         }).orElse(false);
