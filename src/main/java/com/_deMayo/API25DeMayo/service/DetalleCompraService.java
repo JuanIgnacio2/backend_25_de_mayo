@@ -1,14 +1,15 @@
 package com._deMayo.API25DeMayo.service;
 
 import com._deMayo.API25DeMayo.entity.DetalleCompraId;
-import com._deMayo.API25DeMayo.entity.Detalle_compra;
+import com._deMayo.API25DeMayo.entity.DetalleCompra;
 import java.util.List;
 import java.util.Optional;
 
 public interface DetalleCompraService {
-    List<Detalle_compra> getAllDetalleCompras();
-    Optional<Detalle_compra> getDetalleCompraById(DetalleCompraId id);
-    Detalle_compra saveDetalleCompra(Detalle_compra detalle_compra);
-    Detalle_compra updateDetalleCompra(DetalleCompraId id, Detalle_compra detalle_compra);
+    List<DetalleCompra> getAllDetalleCompras();
+    Optional<DetalleCompra> getDetalleCompraById(DetalleCompraId id);
+    DetalleCompra saveDetalleCompra(DetalleCompra detalle_compra);
+    void saveAllDetalles(List<DetalleCompra> detalles);
+    DetalleCompra updateDetalleCompra(DetalleCompraId id, DetalleCompra detalle_compra);
     Boolean deleteDetalleCompraById(DetalleCompraId id);
 }

@@ -27,6 +27,11 @@ public class StockController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/buscar")
+    public List<Stock> buscarPorNombre(@RequestParam String nombre) {
+        return stockService.findByNombre(nombre);
+    }
+
     @PostMapping
     public Stock createStock(@RequestBody Stock stock) {
         return stockService.saveStock(stock);

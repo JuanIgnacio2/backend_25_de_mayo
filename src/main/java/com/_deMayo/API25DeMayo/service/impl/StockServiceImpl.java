@@ -1,10 +1,13 @@
 package com._deMayo.API25DeMayo.service.impl;
 
+import com._deMayo.API25DeMayo.entity.DetalleCompra;
+import com._deMayo.API25DeMayo.entity.Stock;
 import com._deMayo.API25DeMayo.repository.StockRepository;
 import com._deMayo.API25DeMayo.service.StockService;
-import com._deMayo.API25DeMayo.entity.Stock;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +24,10 @@ public class StockServiceImpl implements StockService {
     @Override
     public Optional<Stock> getStockById(Long id){
         return stockRepository.findById(id);
+    }
+
+    public List<Stock> findByNombre(String nombre) {
+        return stockRepository.findByNombre(nombre);
     }
 
     @Override
@@ -40,6 +47,27 @@ public class StockServiceImpl implements StockService {
                     stock.setPrecio(stockDetails.getPrecio());
                     return stockRepository.save(stock);
                 }).orElse(null);
+    }
+
+    @Transactional
+    public void actualizarStockPorCompra(DetalleCompra detalle){
+        Optional <Stock> optionalStock = stockRepository.findByNombre(detalle.getNombre())
+                                                        .stream()
+                                                        .findFirst();
+
+        if(optionalStock.isPresent()){
+            Stock stock = optionalStock.get();
+            stock.setCantidad(stock.getCantidad() + detalle.getCantidad());
+            stockRepository.save(stock);
+        }else{
+            Stock nuevoStock = new Stock();
+            nuevoStock.setCantidad(detalle.getCantidad());
+            nuevoStock.setNombre(detalle.getNombre());
+            nuevoStock.setPrecio(detalle.getPrecio());
+            nuevoStock.setStock_minimo(0);
+            nuevoStock.setStock_maximo(100);
+            stockRepository.save(nuevoStock);
+        }
     }
 
     @Override
