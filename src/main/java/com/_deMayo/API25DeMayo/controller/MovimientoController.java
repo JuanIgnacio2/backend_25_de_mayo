@@ -19,7 +19,7 @@ public class MovimientoController {
         return ResponseEntity.ok(movimientoService.getAllMovimientos());
     }
 
-    @GetMapping("/{codigoMoviemiento}")
+    @GetMapping("/{codigoMovimiento}")
     public ResponseEntity<Movimientos> getMovimientosByCodigoMovimiento(@PathVariable Long codigoMovimiento) {
         return movimientoService.getMovimientoById(codigoMovimiento)
                 .map(ResponseEntity::ok)

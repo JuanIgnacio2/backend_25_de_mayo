@@ -20,7 +20,7 @@ public class ProveedorController {
         return proveedorService.getAllProveedores();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{cuit}")
     public ResponseEntity<Proveedores> getProveedoreById(@PathVariable String cuit) {
         Optional<Proveedores> proveedor = proveedorService.getProveedorById(cuit);
         return proveedor.map(ResponseEntity::ok)
@@ -38,7 +38,7 @@ public class ProveedorController {
         return updatedProveedor != null ? ResponseEntity.ok(updatedProveedor) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{cuit}")
     public ResponseEntity<Proveedores> deleteProveedor(@PathVariable String cuit) {
         return proveedorService.deleteProveedor(cuit) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }

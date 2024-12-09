@@ -47,7 +47,7 @@ public class CompraServicesImpl implements CompraService {
         detalleCompraService.saveAllDetalles(compras.getDetalleCompras());
 
         for (DetalleCompra detalle : compras.getDetalleCompras()) {
-            stockService.actualizarStockPorCompra(detalle);
+            stockService.actualizarStockPorCompra(detalle, compras.getCodigoDeposito());
         }
         System.out.println("Compra y detalles guardados: " + savedCompra);
         return savedCompra;
@@ -72,7 +72,7 @@ public class CompraServicesImpl implements CompraService {
             for (DetalleCompra detalle : compras.getDetalleCompras()) {
                 detalle.setCompra(updatedCompras);
                 detalleCompraService.saveDetalleCompra(detalle);
-                stockService.actualizarStockPorCompra(detalle);
+                stockService.actualizarStockPorCompra(detalle, compras.getCodigoDeposito());
             }
 
             return updatedCompras;

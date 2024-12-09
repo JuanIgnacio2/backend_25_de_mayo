@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -30,6 +31,17 @@ public class StockController {
     @GetMapping("/buscar")
     public List<Stock> buscarPorNombre(@RequestParam String nombre) {
         return stockService.findByNombre(nombre);
+    }
+
+    @GetMapping("/top5")
+    public List<Stock> getTop5ByTotalPrice(){
+        return stockService.getTop5ByTotalPrice();
+    }
+
+    @GetMapping("/types")
+    public ResponseEntity<List<Map<String,String>>> getTypes() {
+        List<Map<String,String>> tipos = stockService.getAllTypes();
+        return ResponseEntity.ok(tipos);
     }
 
     @PostMapping

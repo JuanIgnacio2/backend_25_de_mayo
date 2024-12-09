@@ -20,13 +20,16 @@ public class DetalleCompra {
     private Compras compra;
 
     @Column(nullable = false)
-    private Long idProducto;
-
-    @Column(nullable = false)
     private String nombre;
 
     @Column(nullable = false)
     private Integer cantidad;
+
+    @Column(nullable = false)
+    private String unidad;
+
+    @Column(nullable = false)
+    private String tipo;
 
     @Column(nullable = false)
     private Double precio;
@@ -36,7 +39,6 @@ public class DetalleCompra {
     public String toString() {
         return "DetalleCompra{" +
                 "idDetalle=" + idDetalle +
-                ", idProducto=" + idProducto +
                 ", nombre='" + nombre + '\'' +
                 ", cantidad=" + cantidad +
                 ", precio=" + precio +

@@ -1,5 +1,6 @@
 package com._deMayo.API25DeMayo.service.impl;
 
+import com._deMayo.API25DeMayo.entity.DetalleCompra;
 import com._deMayo.API25DeMayo.entity.DetalleMovimiento;
 import com._deMayo.API25DeMayo.entity.DetalleMovimientoId;
 import com._deMayo.API25DeMayo.service.DetalleMovimientoService;
@@ -21,7 +22,7 @@ public class DetalleMovimientoServiceImpl implements DetalleMovimientoService {
     }
 
     @Override
-    public Optional<DetalleMovimiento> getDetalleMovimientoById(DetalleMovimientoId id){
+    public Optional<DetalleMovimiento> getDetalleMovimientoById(Long id){
         return detalleMovimientoRepository.findById(id);
     }
 
@@ -30,18 +31,22 @@ public class DetalleMovimientoServiceImpl implements DetalleMovimientoService {
         return detalleMovimientoRepository.save(detalleMovimiento);
     }
 
+    public void saveAllDetalles(List<DetalleMovimiento> detalles) {
+        detalleMovimientoRepository.saveAll(detalles);
+    }
+
     @Override
-    public DetalleMovimiento updateDetalleMovimiento(DetalleMovimientoId id, DetalleMovimiento detalleMovimientoDetalles){
+    public DetalleMovimiento updateDetalleMovimiento(Long id, DetalleMovimiento detalleMovimientoDetalles){
         return detalleMovimientoRepository.findById(id)
                 .map(detalleMovimiento ->{
                     detalleMovimiento.setCantidad(detalleMovimientoDetalles.getCantidad());
-                    detalleMovimiento.setPrecio(detalleMovimientoDetalles.getPrecio());
+                    detalleMovimiento.setPrecioTotal(detalleMovimientoDetalles.getPrecioTotal());
                     return detalleMovimientoRepository.save(detalleMovimiento);
                 }).orElse(null);
     }
 
     @Override
-    public Boolean deleteDetalleMovimiento(DetalleMovimientoId id){
+    public Boolean deleteDetalleMovimiento(Long id){
         return detalleMovimientoRepository.findById(id)
                 .map(detalleMovimiento -> {
                     detalleMovimientoRepository.delete(detalleMovimiento);

@@ -21,7 +21,7 @@ public class DetalleMovimientoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetalleMovimiento> getDetalleMovimientoById(@PathVariable DetalleMovimientoId id) {
+    public ResponseEntity<DetalleMovimiento> getDetalleMovimientoById(@PathVariable Long id) {
         return detalleMovimientoService.getDetalleMovimientoById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -33,13 +33,13 @@ public class DetalleMovimientoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetalleMovimiento> updateDetalleMovimiento(@PathVariable DetalleMovimientoId id, @RequestBody DetalleMovimiento detalleMovimientoDetails) {
+    public ResponseEntity<DetalleMovimiento> updateDetalleMovimiento(@PathVariable Long id, @RequestBody DetalleMovimiento detalleMovimientoDetails) {
         DetalleMovimiento updateDetalleMovimiento = detalleMovimientoService.updateDetalleMovimiento(id, detalleMovimientoDetails);
         return updateDetalleMovimiento != null ? ResponseEntity.ok(updateDetalleMovimiento) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<DetalleMovimiento> deleteDetalleMovimiento(@PathVariable DetalleMovimientoId id) {
+    public ResponseEntity<DetalleMovimiento> deleteDetalleMovimiento(@PathVariable Long id) {
         return detalleMovimientoService.deleteDetalleMovimiento(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }

@@ -40,6 +40,7 @@ public class DetalleCompraServiceImpl implements DetalleCompraService {
             detalleCompra.setCantidad(detalle_compra.getCantidad());
             detalleCompra.setPrecio(detalle_compra.getPrecio());
             detalleCompra.setNombre(detalle_compra.getNombre());
+            detalleCompra.setUnidad(detalle_compra.getUnidad());
             return detalleCompraRepository.save(detalleCompra);
         }).orElse(null);
     }

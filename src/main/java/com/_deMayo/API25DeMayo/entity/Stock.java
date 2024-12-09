@@ -10,11 +10,12 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_producto;
-
+    @Column(name = "codigo_deposito", nullable = false)
     private Integer codigo_deposito;
     private String nombre;
     private Integer cantidad;
+    private String unidad;
     private Integer stock_minimo;
-    private Integer stock_maximo;
     private Double precio;
+    private String tipo;
 }
